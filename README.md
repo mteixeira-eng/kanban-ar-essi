@@ -1,4 +1,54 @@
-# kanban-ar-essi
+#!/bin/bash
+
+# Script para automatizar o upload de arquivos README.md para repositórios GitHub.
+# Uso: ./upload_readme.sh <caminho_do_repositorio> <caminho_do_novo_readme>
+
+REPO_PATH="$1"
+NEW_README_PATH="$2"
+
+# Verifica se os argumentos foram fornecidos
+if [ -z "$REPO_PATH" ] || [ -z "$NEW_README_PATH" ]; then
+    echo "Uso: $0 <caminho_do_repositorio> <caminho_do_novo_readme>"
+    echo "Exemplo: $0 /caminho/para/meu/repo /caminho/para/meu/novo_readme.md"
+    exit 1
+fi
+
+# Verifica se o caminho do repositório existe
+if [ ! -d "$REPO_PATH" ]; then
+    echo "Erro: O diretório do repositório '$REPO_PATH' não existe."
+    exit 1
+fi
+
+# Verifica se o novo README existe
+if [ ! -f "$NEW_README_PATH" ]; then
+    echo "Erro: O arquivo README.md '$NEW_README_PATH' não existe."
+    exit 1
+fi
+
+echo "Iniciando upload do README para o repositório: $REPO_PATH"
+
+# Navega para o diretório do repositório
+cd "$REPO_PATH" || { echo "Erro: Não foi possível navegar para o diretório do repositório."; exit 1; }
+
+# Copia o novo README.md para o repositório
+cp "$NEW_README_PATH" "./README.md" || { echo "Erro: Não foi possível copiar o novo README.md."; exit 1; }
+
+echo "Arquivo README.md copiado com sucesso."
+
+# Adiciona o README.md ao staging area
+git add README.md || { echo "Erro: Falha ao adicionar README.md ao staging."; exit 1; }
+
+echo "README.md adicionado ao staging."
+
+# Commita as mudanças
+git commit -m "Update README.md with professional content" || { echo "Erro: Falha ao commitar as mudanças. Verifique se há algo para commitar."; exit 1; }
+
+echo "Mudanças commitadas com sucesso."
+
+# Faz o push para o repositório remoto
+git push || { echo "Erro: Falha ao fazer push para o repositório remoto. Verifique suas credenciais ou conexão."; exit 1; }
+
+echo "Upload do README.md concluído com sucesso para $REPO_PATH! # kanban-ar-essi
 # Kanban AR – ESSI Engenharia
 
 <p align="center">
