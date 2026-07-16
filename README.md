@@ -1,3 +1,70 @@
+# Script para automatizar o deploy do Kanban AR – ESSI no GitHub Pages.
+# Este script assume que o seu projeto Kanban AR – ESSI está em um diretório local
+# e que o conteúdo web está dentro da pasta 'app/'.
+# Ele criará uma branch 'gh-pages' e fará o push do conteúdo da pasta 'app/' para ela.
+
+# Uso: ./deploy_github_pages.sh <caminho_do_repositorio_kanban_ar>
+
+REPO_PATH="$1"
+
+# Verifica se o caminho do repositório foi fornecido
+if [ -z "$REPO_PATH" ]; then
+    echo "Uso: $0 <caminho_do_repositorio_kanban_ar>"
+    echo "Exemplo: $0 /caminho/para/meu/kanban-ar-essi"
+    exit 1
+fi
+
+# Verifica se o caminho do repositório existe
+if [ ! -d "$REPO_PATH" ]; then
+    echo "Erro: O diretório do repositório '$REPO_PATH' não existe."
+    exit 1
+fi
+
+# Verifica se a pasta 'app/' existe dentro do repositório
+if [ ! -d "$REPO_PATH/app" ]; then
+    echo "Erro: A pasta 'app/' não foi encontrada em '$REPO_PATH'. Certifique-se de que o conteúdo web está lá."
+    exit 1
+fi
+
+echo "Iniciando deploy do Kanban AR – ESSI para GitHub Pages..."
+
+# Navega para o diretório do repositório
+cd "$REPO_PATH" || { echo "Erro: Não foi possível navegar para o diretório do repositório."; exit 1; }
+
+# Salva a branch atual para poder retornar depois
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+# Cria e alterna para a branch 'gh-pages' (ou alterna se já existir)
+git checkout -b gh-pages || git checkout gh-pages
+
+# Remove todos os arquivos existentes na raiz da branch gh-pages, exceto .git
+find . -maxdepth 1 ! -name '.git' ! -name '.' ! -name '..' -exec rm -rf {} + 
+
+# Copia o conteúdo da pasta 'app/' para a raiz da branch 'gh-pages'
+cp -r app/* ./
+
+# Adiciona todos os arquivos copiados
+git add .
+
+# Commita as mudanças
+git commit -m "Deploy to GitHub Pages" || echo "Nenhuma mudança para commitar."
+
+# Faz o push para a branch 'gh-pages' no repositório remoto
+git push origin gh-pages
+
+echo "Conteúdo da pasta 'app/' enviado para a branch 'gh-pages'."
+
+# Retorna para a branch original
+git checkout "$CURRENT_BRANCH"
+
+echo "Deploy para GitHub Pages concluído!"
+echo "Agora, você precisa configurar o GitHub Pages manualmente no seu repositório:"
+echo "1. Vá para o seu repositório no GitHub."
+echo "2. Clique em 'Settings' (Configurações)."
+echo "3. No menu lateral, clique em 'Pages'."
+echo "4. Em 'Source' (Fonte), selecione a branch 'gh-pages' e a pasta '/ (root)'."
+echo "5. Clique em 'Save' (Salvar)."
+echo "Seu site estará disponível em alguns minutos no endereço: https://<SEU_USUARIO>.github.io/<SEU_REPOSITORIO>/
 Preparei o script e o guia para você colocar o **Kanban AR – ESSI** online agora mesmo!
 
 O método que escolhi foi o **GitHub Pages**, pois ele é gratuito, seguro e perfeito para sites estáticos (como o seu, que usa HTML/CSS/JS).
