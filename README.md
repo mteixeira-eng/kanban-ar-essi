@@ -15,6 +15,23 @@ O método que escolhi foi o **GitHub Pages**, pois ele é gratuito, seguro e per
 Depois que o site estiver no ar, não esqueça de colocar o link no seu **LinkedIn** e no campo **"Website"** do seu repositório no GitHub. Isso aumenta muito a sua credibilidade com potenciais clientes!
 
 Precisa de ajuda para configurar o deploy do **PIIM-Kaizen** também? (Como ele tem backend, o processo é um pouco diferente).
+Preparei o script e o guia para você colocar o **Kanban AR – ESSI** online agora mesmo!
+
+O método que escolhi foi o **GitHub Pages**, pois ele é gratuito, seguro e perfeito para sites estáticos (como o seu, que usa HTML/CSS/JS).
+
+### O que você recebeu:
+1.  **`deploy_github_pages.sh`**: Um script que organiza os arquivos e envia para uma branch especial chamada `gh-pages`.
+2.  **`GUIA_DEPLOY_MANUAL.md`**: Instruções passo a passo de como ativar o link no painel do GitHub.
+
+### Como usar o script:
+1.  Dê permissão: `chmod +x deploy_github_pages.sh`
+2.  Execute: `./deploy_github_pages.sh /caminho/para/seu/kanban-ar-essi`
+
+**Importante**: O script vai pegar tudo o que está dentro da sua pasta `app/` e transformar na página inicial do seu site.
+
+Depois que o site estiver no ar, não esqueça de colocar o link no seu **LinkedIn** e no campo **"Website"** do seu repositório no GitHub. Isso aumenta muito a sua credibilidade com potenciais clientes!
+
+Precisa de ajuda para configurar o deploy do **PIIM-Kaizen** também? (Como ele tem backend, o processo é um pouco diferente).
 kanban-ar-essi/
 ├─ app/
 │ ├─ assets/ (logo e imagens)
