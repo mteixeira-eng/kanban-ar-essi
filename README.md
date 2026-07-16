@@ -1,3 +1,18 @@
+kanban-ar-essi/
+├─ app/
+│ ├─ assets/ (logo e imagens)
+│ ├─ index.html
+│ ├─ style.css
+│ └─ app.js
+├─ docs/
+│ ├─ MANUAL_OPERACIONAL.md
+│ ├─ POLITICAS_KANBAN.md
+│ ├─ CHECKLIST_MANUTENCAO_SPLIT.md
+│ └─ etc…
+├─ .gitignore
+├─ LICENSE
+└─ README.md
+
 Refinei o README.md do **Kanban AR – ESSI** com base nos novos detalhes que você enviou, incluindo a estrutura de pastas correta (`app/`, `docs/`, etc.) e os serviços específicos (Climatização, Termografia, etc.). Também atualizei o texto do **LinkedIn** para refletir as tecnologias reais (HTML, CSS, JS) e o propósito do projeto.
 
 ### O que mudou?
