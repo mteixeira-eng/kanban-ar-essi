@@ -1,3 +1,15 @@
+Refinei o README.md do **Kanban AR – ESSI** com base nos novos detalhes que você enviou, incluindo a estrutura de pastas correta (`app/`, `docs/`, etc.) e os serviços específicos (Climatização, Termografia, etc.). Também atualizei o texto do **LinkedIn** para refletir as tecnologias reais (HTML, CSS, JS) e o propósito do projeto.
+
+### O que mudou?
+1.  **README do Kanban AR**: Agora reflete que é um projeto web estático, com a estrutura de arquivos real e as categorias de serviços da ESSI.
+2.  **Post do LinkedIn**: Atualizado para destacar o foco em ar condicionado e a simplicidade ágil da ferramenta.
+
+**Como proceder agora?**
+*   **GitHub**: Copie o conteúdo do `Kanban_AR_ESSI_README_refined.md` e cole no seu repositório.
+*   **LinkedIn**: Use o `linkedin_post_updated.md` para a sua publicação.
+
+Deseja que eu faça algum ajuste no README do **PIIM-Kaizen** também ou os detalhes anteriores já estão corretos para ele? Se precisar de ajuda para configurar o deploy (hospedagem online) para que os recrutadores possam clicar e ver o sistema rodando, é só me avisar!
+
 #!/bin/bash
 
 # Script para automatizar o upload de arquivos README.md para repositórios GitHub.
